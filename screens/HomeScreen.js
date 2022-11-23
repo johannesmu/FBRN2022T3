@@ -1,9 +1,12 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { useState, useEffect } from 'react'
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native'
 
-// const Tab = createBottomTabNavigator()
+import {ListScreen} from './ListScreen'
+
+const Stack = createNativeStackNavigator()
 
 export function HomeScreen( props ) {
     const navigation = useNavigation()
@@ -20,12 +23,11 @@ export function HomeScreen( props ) {
     }, [props.authStatus])
 
     return (
-        <View>
-            <Text>Home </Text>
-            <TouchableOpacity style={ styles.button } onPress={ () => pressHandler() }>
-                <Text>Go to Register</Text>
-            </TouchableOpacity>
-        </View>
+        
+            <Stack.Navigator>
+                <Stack.Screen name="List" component={ListScreen} />
+            </Stack.Navigator>
+        
     )
 }
 

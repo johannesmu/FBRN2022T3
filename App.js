@@ -36,6 +36,7 @@ export default function App() {
     if( user ) {
       // user is signed in
       setAuth( user )
+      console.log( user )
     }
     else {
       setAuth( false )
