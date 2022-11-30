@@ -109,6 +109,7 @@ export default function App() {
         listData.push( item )
       })
       setData( listData )
+      // console.log( listData )
     })
   }
 

@@ -12,6 +12,8 @@ const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
 
 export function HomeScreen( props ) {
+    const [listData,setListData] = useState()
+
     const navigation = useNavigation()
 
     const pressHandler = () => {
@@ -25,10 +27,16 @@ export function HomeScreen( props ) {
         }
     }, [props.authStatus])
 
+    useEffect( () => {
+        setListData( props.list )
+    }, [props.list])
+
     return (
         
             <Tab.Navigator>
-                <Stack.Screen name="List" component={ListScreen} listData={ props.data } />
+                <Stack.Screen name="List">
+                    { (props) => <ListScreen {...props} data={ listData } /> }
+                </Stack.Screen>
                 <Stack.Screen name="Add" component={AddScreen} add={ props.add } />
             </Tab.Navigator>
         

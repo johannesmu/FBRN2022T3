@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, TextInput } from 'react-native'
 export function AddScreen( props ) {
   return(
     <View>
