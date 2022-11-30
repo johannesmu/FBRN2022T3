@@ -3,10 +3,13 @@ import { useState, useEffect } from 'react'
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import {ListScreen} from './ListScreen'
+import { AddScreen } from './AddScreen';
 
 const Stack = createNativeStackNavigator()
+const Tab = createBottomTabNavigator()
 
 export function HomeScreen( props ) {
     const navigation = useNavigation()
@@ -24,9 +27,10 @@ export function HomeScreen( props ) {
 
     return (
         
-            <Stack.Navigator>
-                <Stack.Screen name="List" component={ListScreen} />
-            </Stack.Navigator>
+            <Tab.Navigator>
+                <Stack.Screen name="List" component={ListScreen} listData={ props.data } />
+                <Stack.Screen name="Add" component={AddScreen} add={ props.add } />
+            </Tab.Navigator>
         
     )
 }
